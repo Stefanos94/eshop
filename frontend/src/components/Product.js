@@ -1,3 +1,5 @@
+import Rating from "./Rating";
+
 export default function Product(props){
     const {product} = props;
     return (
@@ -9,7 +11,7 @@ export default function Product(props){
                 <a href={`/product/${product.id}`}>
                         <h2>{product.name}</h2>
                     </a>
-                    
+                    <Rating
                     <div className="price">
                         {product.price}€
                     </div>
