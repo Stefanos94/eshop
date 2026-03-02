@@ -1,0 +1,366 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-01 23:43+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\home.html:18
+msgid "Early-harvest, cold-pressed extra virgin olive oil – straight from Greece."
+msgstr "Tidligt høstet, koldpresset ekstra jomfru olivenolie – direkte fra Grækenland."
+
+#: .\templates\home.html:21
+msgid "Shop now"
+msgstr "Shop nu"
+
+#: .\templates\oscar\catalogue\browse.html:17
+#: .\templates\oscar\catalogue\category.html:26
+#: .\templates\oscar\catalogue\detail.html:22
+#: .\templates\oscar\catalogue\reviews\review_detail.html:12
+#: .\templates\oscar\catalogue\reviews\review_list.html:14
+msgid "Home"
+msgstr ""
+
+#: .\templates\oscar\catalogue\browse.html:26
+msgid "Show results for"
+msgstr ""
+
+#: .\templates\oscar\catalogue\browse.html:48
+msgid "Refine by"
+msgstr ""
+
+#: .\templates\oscar\catalogue\browse.html:70
+#, python-format
+msgid ""
+"\n"
+"                    <strong>%(num_results)s</strong> result - showing "
+"<strong>%(start)s</strong> to <strong>%(end)s</strong>.\n"
+"                "
+msgid_plural ""
+"\n"
+"                    <strong>%(num_results)s</strong> results - showing "
+"<strong>%(start)s</strong> to <strong>%(end)s</strong>.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\oscar\catalogue\browse.html:76
+#, python-format
+msgid ""
+"\n"
+"                    <strong>%(num_results)s</strong> result.\n"
+"                "
+msgid_plural ""
+"\n"
+"                    <strong>%(num_results)s</strong> results.\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\oscar\catalogue\browse.html:89
+msgid "<strong>0</strong> results."
+msgstr ""
+
+#: .\templates\oscar\catalogue\browse.html:107
+msgid "No products found."
+msgstr ""
+
+#: .\templates\oscar\catalogue\category.html:17
+msgid "Edit this category"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:66
+msgid "Edit this product"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:87
+msgid "Variants:"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:104
+msgid "Product Description"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:112
+msgid "Product Information"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:117
+msgid "UPC"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:121
+msgid "Product Type"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:127
+msgid "Price (excl. tax)"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:131
+msgid "Price (incl. tax)"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:134
+msgid "Tax"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:138
+msgid "Availability"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:150
+msgid "Number of reviews"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:162
+msgid "See all reviews"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:164
+msgid "Customer Reviews"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:171
+#, python-format
+msgid ""
+"This product does not have any reviews yet -\n"
+"                            <a href=\"%(add_review_url)s#addreview\">be the "
+"first to write one</a>.\n"
+"                        "
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:175
+msgid "This product does not have any reviews yet"
+msgstr ""
+
+#: .\templates\oscar\catalogue\detail.html:194
+msgid "Recommended items"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_basket_form.html:13
+#: .\templates\oscar\catalogue\partials\add_to_basket_form_compact.html:12
+#: .\templates\oscar\catalogue\partials\add_to_basket_form_compact.html:15
+msgid "Add to basket"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_basket_form.html:13
+#: .\templates\oscar\catalogue\partials\add_to_basket_form_compact.html:12
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:35
+msgid "Adding..."
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_basket_form.html:20
+msgid "You have an active stock alert for this product."
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_basket_form.html:24
+msgid "You can get an email alert when this product is back in stock."
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_basket_form.html:26
+#: .\templates\oscar\catalogue\partials\review.html:40
+#: .\templates\oscar\catalogue\partials\review.html:45
+msgid "Submitting..."
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_basket_form.html:26
+msgid "Notify me"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:11
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:35
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:50
+msgid "Add to wish list"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:17
+#, python-format
+msgid ""
+"\n"
+"                                        Add to '%(name)s' wish list\n"
+"                                    "
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:26
+msgid "Create a new wishlist"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:42
+#, python-format
+msgid ""
+"\n"
+"                    <span class=\"float-left\">Product is in <a "
+"href=\"%(url)s\">'%(name)s'</a> wishlist.</span>\n"
+"                "
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:45
+msgid "Removing..."
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:45
+msgid "Remove"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\add_to_wishlist.html:50
+msgid "Please login to add products to a wish list."
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\gallery.html:22
+msgid "Previous"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\gallery.html:26
+msgid "Next"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\review.html:23
+#, python-format
+msgid ""
+"\n"
+"                Reviewed by you on %(review_date)s\n"
+"                "
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\review.html:27
+#, python-format
+msgid ""
+"\n"
+"                    Reviewed by <strong>%(name)s</strong> on "
+"%(review_date)s\n"
+"                "
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\review.html:31
+msgid "Permalink"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\review.html:36
+msgid "Is this review helpful?"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\review.html:40
+msgid "Yes"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\review.html:45
+msgid "No"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\review.html:52
+#, python-format
+msgid ""
+"\n"
+"            <strong>%(num_up_votes)s</strong> of %(num_votes)s customer "
+"found this useful\n"
+"            "
+msgid_plural ""
+"\n"
+"            <strong>%(num_up_votes)s</strong> of %(num_votes)s customers "
+"found this useful\n"
+"            "
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\oscar\catalogue\partials\review.html:58
+msgid "This review has no votes."
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\stock_record.html:9
+msgid "Free"
+msgstr ""
+
+#: .\templates\oscar\catalogue\partials\stock_record.html:33
+msgid "Unavailable"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\partials\review_stars.html:13
+#, python-format
+msgid ""
+"\n"
+"                    %(num_reviews)s customer review\n"
+"                "
+msgid_plural ""
+"\n"
+"                    %(num_reviews)s customer reviews\n"
+"                "
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\templates\oscar\catalogue\reviews\partials\review_stars.html:26
+msgid "Write a review"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_detail.html:5
+#: .\templates\oscar\catalogue\reviews\review_detail.html:24
+msgid "Reviews"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_detail.html:33
+#: .\templates\oscar\catalogue\reviews\review_list.html:32
+msgid "Customer reviews"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_form.html:9
+msgid "Leave a product review"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_form.html:48
+msgid "Saving..."
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_form.html:48
+msgid "Save review"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_form.html:49
+msgid "or"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_form.html:50
+msgid "cancel"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_list.html:7
+#: .\templates\oscar\catalogue\reviews\review_list.html:26
+msgid "All reviews"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_list.html:43
+msgid "Go"
+msgstr ""
+
+#: .\templates\oscar\catalogue\reviews\review_list.html:54
+msgid "This product does not have any reviews yet."
+msgstr ""
+
+#: .\templates\oscar\partials\nav_accounts.html:22
+#: .\templates\oscar\partials\nav_accounts.html:28
+msgid "Account"
+msgstr ""
+
+#: .\templates\oscar\partials\nav_accounts.html:36
+msgid "Dashboard"
+msgstr ""
+
+#: .\templates\oscar\partials\nav_accounts.html:43
+msgid "Logout"
+msgstr ""
+
+#: .\templates\oscar\partials\nav_accounts.html:51
+msgid "Login or register"
+msgstr ""

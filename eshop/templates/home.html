@@ -1,0 +1,115 @@
+{% extends "oscar/base.html" %}
+{% load static %}
+{% load i18n %}
+
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+{% endblock %}
+
+{% block layout %}
+{% get_current_language as CURRENT_LANG %}
+    {# Top-horizontal bar with account, notifictions, dashboard links #}
+    {% comment %}
+    {% include "oscar/partials/nav_accounts.html" %}
+    {% endcomment %}
+    
+    <section class="hero" style="background-image: url('{% static "images/home-olives.webp" %}');">
+
+    <div class="language-switcher">
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="/" />
+
+                {% if CURRENT_LANG == "en" %}
+                    <button type="submit" name="language" value="da" class="lang-btn">
+                        <img src="{% static 'images/Flag_of_Denmark.png' %}" alt="Danish" class="lang-flag">
+                    </button>
+                {% elif CURRENT_LANG == "da" %}
+                    <button type="submit" name="language" value="en" class="lang-btn">
+                        <img src="{% static 'images/Flag_of_the_United_Kingdom.png' %}" alt="English" class="lang-flag">
+                    </button>
+                {% endif %}
+            </form>
+        </div>
+
+
+        <div class="hero-overlay"></div>
+
+        
+        <div class="hero-content">
+            
+            <h1 class="hero-title">Mediterranean Boutique</h1>
+            <p class="hero-subtitle">
+                {% trans "Early-harvest, cold-pressed extra virgin olive oil – straight from Greece." %}
+            </p>
+            <a href="{% url 'catalogue:index' %}" class="hero-button">
+                {% trans "Shop now" %}
+            </a>
+        </div>
+    </section>
+    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
+    {% comment %}
+    <header class="header container">
+        <div class="page_inner">
+            <div class="row justify-content-end">
+
+                {% include "oscar/partials/brand.html" %}
+
+                {# Mini-basket wrapped in a block so some templates can now display it #}
+                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+            </div>
+        </div>
+        {% block navigation %}
+            {% include "oscar/partials/nav_primary.html" %}
+            
+        {% endblock %}
+    </header>
+    
+    {# Main content of page - other layout templates may override this block #}
+    {% block content_wrapper %}
+        
+        <div class="container page">
+            <div class="page_inner">
+                {% block breadcrumbs %}{% endblock %}
+                {% block header %}
+                    <div class="page-header">
+                        <h1>{% block headertext %}{% endblock %}</h1>
+                    </div>
+                {% endblock %}
+                {% include "oscar/partials/alert_messages.html" %}
+                {% block subnavigation %}{% endblock %}
+                <div class="content">
+                    {% block subheader %}{% endblock subheader %}
+
+                    {# Div exists for AJAX updates to entire content section #}
+                    <div id="content_inner">{% block content %}{% endblock %}</div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    
+    <div></div>
+    {% include "oscar/partials/footer.html" %}
+    {% endcomment %}
+{% endblock %}
+
+{# Local scripts #}
+{% block scripts %}
+    {{ block.super }}
+    <!-- Twitter Bootstrap -->
+    <script src="{% static "oscar/js/bootstrap4/bootstrap.bundle.min.js" %}"></script>
+    <!-- Oscar -->
+    <script src="{% static "oscar/js/oscar/ui.js" %}"></script>
+{% endblock %}
+
+{% block extrascripts %}
+    {% include "oscar/partials/extrascripts.html" %}
+    {{ block.super }}
+{% endblock %}
+
+{% block onbodyload %}
+    {{ block.super }}
+    oscar.init();
+{% endblock %}

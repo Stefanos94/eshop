@@ -1,0 +1,103 @@
+.lang-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.lang-btn:hover {
+    opacity: 0.7;
+}
+
+.lang-flag {
+    width: 28px;     /* adjust flag size here */
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;          /* ensures it appears above overlay & content */
+}
+
+#hero-title {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #2b6c24;
+}
+
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;                    /* hero height, adjust as you like */
+    background-size: cover;          /* image covers entire area */
+    background-position: center;     /* center the image */
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;             /* vertically center content */
+    justify-content: center;         /* horizontally center content */
+    padding: 0 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+.hero-content {
+    text-align: center;
+    color: white;                    
+    max-width: 720px;
+    z-index: 2;                      /* above overlay */
+    background: rgba(0, 0, 0, 0.4);  /* subtle overlay behind text */
+    padding: 1.5rem 2rem;
+    border-radius: 74px;
+    overflow: hidden;
+    
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0; 
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;   
+}
+
+.hero-title {
+    color: #cce8d4;
+    font-size: 3.4rem;
+    margin-bottom: 0.5rem;
+
+
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+
+}
+
+.hero-button {
+    font-size: 1.8rem;
+    display: inline-block;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: #2b6c24;       /* olive green */
+    color: #ffffff;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    
+}
+
+.hero-button:hover {
+    opacity: 0.9;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    transform: translateY(-1px);
+}
