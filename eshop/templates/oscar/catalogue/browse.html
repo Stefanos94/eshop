@@ -9,10 +9,12 @@
     {% if summary %}{{ summary }} |{% endif %} {{ block.super }}
 {% endblock %}
 
-{% block headertext %}{{ summary }}{% endblock %}
+{% block headertext %}
+    <h1 class="med-page-header">{{ summary }}</h1>
+{% endblock %}
 
 {% block breadcrumbs %}
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="mb-4 mt-3">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ homepage_url }}">{% trans "Home" %}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ summary }}</li>
@@ -23,11 +25,11 @@
 {% block column_left %}
     {% category_tree as tree_categories %}
     {% if tree_categories %}
-        <h4>{% trans "Show results for" %}</h4>
-        <div class="side_categories card card-body bg-light">
-            <ul class="nav nav-list flex-column">
+        <div class="med-sidebar">
+            <h4>{% trans "Categories" %}</h4>
+            <ul>
                 {% for tree_category in tree_categories %}
-                    <li class="mt-2">
+                    <li>
                         <a href="{{ tree_category.url }}">
                             {% if tree_category.pk == category.pk %}
                                 <strong>{{ tree_category.name }}</strong>
@@ -44,9 +46,10 @@
             </ul>
         </div>
     {% endif %}
+    
     {% if has_facets %}
-        <h4>{% trans "Refine by" %}</h4>
-        <div class="side_categories card card-body bg-light">
+        <div class="med-sidebar mt-5">
+            <h4>{% trans "Refine by" %}</h4>
             {% for field, data in facet_data.items %}
                 {% if data.results %}
                     {% include 'oscar/search/partials/facet.html' with name=data.name items=data.results %}
@@ -57,7 +60,7 @@
 {% endblock %}
 
 {% block content %}
-    <form method="get">
+    <form method="get" class="med-browse-bar">
         {# Render other search params as hidden inputs #}
         {% for value in selected_facets %}
             <input type="hidden" name="selected_facets" value="{{ value }}" />
@@ -65,47 +68,53 @@
         <input type="hidden" name="q" value="{{ search_form.q.value|default_if_none:"" }}" />
 
         {% if paginator.count %}
-            {% if paginator.num_pages > 1 %}
-                {% blocktrans with start=page_obj.start_index end=page_obj.end_index count num_results=paginator.count %}
-                    <strong>{{ num_results }}</strong> result - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
-                {% plural %}
-                    <strong>{{ num_results }}</strong> results - showing <strong>{{ start }}</strong> to <strong>{{ end }}</strong>.
-                {% endblocktrans %}
-            {% else %}
-                {% blocktrans count num_results=paginator.count %}
-                    <strong>{{ num_results }}</strong> result.
-                {% plural %}
-                    <strong>{{ num_results }}</strong> results.
-                {% endblocktrans %}
-            {% endif %}
+            <div class="med-results-count">
+                {% if paginator.num_pages > 1 %}
+                    {% blocktrans with start=page_obj.start_index end=page_obj.end_index count num_results=paginator.count %}
+                        Showing {{ start }} to {{ end }} of <strong>{{ num_results }}</strong> products
+                    {% plural %}
+                        Showing {{ start }} to {{ end }} of <strong>{{ num_results }}</strong> products
+                    {% endblocktrans %}
+                {% else %}
+                    {% blocktrans count num_results=paginator.count %}
+                        <strong>{{ num_results }}</strong> product found
+                    {% plural %}
+                        <strong>{{ num_results }}</strong> products found
+                    {% endblocktrans %}
+                {% endif %}
+            </div>
+            
             {% if form %}
-                <div class="float-right">
+                <div class="med-sort-wrapper">
+                    <span>{% trans "Sort by:" %}</span>
                     {% include "oscar/partials/form_field.html" with field=form.sort_by style='horizontal' %}
                 </div>
             {% endif %}
         {% else %}
-            <p>
-                {% trans "<strong>0</strong> results." %}
-            </p>
+            <p class="med-results-count">{% trans "0 results." %}</p>
         {% endif %}
     </form>
+
     {% if products %}
         <section>
-            <div>
-                <ol class="row list-unstyled ml-0 pl-0">
-                    {% block products %}
-                      {% for product in products %}
-                          <li class="col-sm-6 col-md-4 col-lg-3">{% render_product product.object %}</li>
-                      {% endfor %}
-                    {% endblock %}
-                </ol>
+            <div class="row">
+                {% block products %}
+                    {% for product in products %}
+                        <div class="col-sm-6 col-md-6 col-lg-4 mb-4">
+                            {% render_product product.object %}
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+            </div>
+            <div class="mt-4">
                 {% include "oscar/partials/pagination.html" %}
             </div>
         </section>
     {% else %}
-        <p class="nonefound">{% trans "No products found." %}</p>
+        <p class="text-muted mt-5 text-center" style="font-size: 1.2rem; font-family: 'Playfair Display', serif;">
+            {% trans "No products found in this collection." %}
+        </p>
     {% endif %}
-
 {% endblock content %}
 
 {% block onbodyload %}
