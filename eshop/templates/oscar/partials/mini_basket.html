@@ -1,0 +1,42 @@
+{% load currency_filters %}
+{% load i18n %}
+
+{# 1. The Cart Button #}
+<div class="basket-mini col-sm-5 text-right d-none d-md-block">
+    <button class="btn btn-outline-secondary d-inline-flex align-items-center" id="open-cart-btn" style="gap: 8px;">
+        <i class="fas fa-shopping-cart"></i>
+        <span>
+            <span class="badge badge-pill badge-success">{{ request.basket.num_lines }}</span>
+        </span>
+    </button>
+</div>
+
+{# 2. The Slide-out Cart Panel #}
+<div id="side-cart" class="side-cart-panel">
+    <div class="side-cart-header">
+        <h4 class="mb-0">{% trans "Your Basket" %}</h4>
+        <button id="close-cart-btn" class="close-btn">&times;</button>
+    </div>
+    
+    <div class="side-cart-body">
+        {# This built-in Oscar template will list the items you've added #}
+        {% include "oscar/basket/partials/basket_quick.html" %}
+    </div>
+    
+    <div class="side-cart-footer">
+        <div class="d-flex justify-content-between mb-3 font-weight-bold">
+            <span>{% trans "Total:" %}</span>
+            <span>
+                {% if request.basket.is_tax_known %}
+                    {{ request.basket.total_incl_tax|currency:request.basket.currency }}
+                {% else %}
+                    {{ request.basket.total_excl_tax|currency:request.basket.currency }}
+                {% endif %}
+            </span>
+        </div>
+        <a href="{% url 'basket:summary' %}" class="btn btn-success btn-block">{% trans "View Cart & Checkout" %}</a>
+    </div>
+</div>
+
+{# 3. The Dark Background Overlay #}
+<div id="cart-overlay" class="cart-overlay"></div>

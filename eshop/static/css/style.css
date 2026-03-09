@@ -10,17 +10,19 @@
 }
 
 .lang-flag {
-    width: 28px;     /* adjust flag size here */
+    width: 28px;
+    /* adjust flag size here */
     height: auto;
     border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .language-switcher {
     position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 10;          /* ensures it appears above overlay & content */
+    z-index: 10;
+    /* ensures it appears above overlay & content */
 }
 
 #hero-title {
@@ -34,13 +36,18 @@
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh;                    /* hero height, adjust as you like */
-    background-size: cover;          /* image covers entire area */
-    background-position: center;     /* center the image */
+    height: 100vh;
+    /* hero height, adjust as you like */
+    background-size: cover;
+    /* image covers entire area */
+    background-position: center;
+    /* center the image */
     background-repeat: no-repeat;
     display: flex;
-    align-items: center;             /* vertically center content */
-    justify-content: center;         /* horizontally center content */
+    align-items: center;
+    /* vertically center content */
+    justify-content: center;
+    /* horizontally center content */
     padding: 0 2rem;
     box-sizing: border-box;
     overflow: hidden;
@@ -49,24 +56,26 @@
 
 .hero-content {
     text-align: center;
-    color: white;                    
+    color: white;
     max-width: 720px;
-    z-index: 2;                      /* above overlay */
-    background: rgba(0, 0, 0, 0.4);  /* subtle overlay behind text */
+    z-index: 2;
+    /* above overlay */
+    background: rgba(0, 0, 0, 0.4);
+    /* subtle overlay behind text */
     padding: 1.5rem 2rem;
     border-radius: 74px;
     overflow: hidden;
-    
+
 }
 
 .hero-overlay {
     position: absolute;
-    inset: 0; 
+    inset: 0;
     background: rgba(0, 0, 0, 0.3);
     z-index: 1;
     pointer-events: none;
     width: 100%;
-    height: 100%;   
+    height: 100%;
 }
 
 .hero-title {
@@ -90,14 +99,92 @@
     border-radius: 999px;
     text-decoration: none;
     font-weight: 600;
-    background-color: #2b6c24;       /* olive green */
+    background-color: #2b6c24;
+    /* olive green */
     color: #ffffff;
     transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-    
+
 }
 
 .hero-button:hover {
     opacity: 0.9;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
     transform: translateY(-1px);
+}
+
+/* --- Slide-out Cart Styling --- */
+
+.side-cart-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    /* Hide it 400px off the right edge */
+    width: 400px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+    /* Ensure it floats above the navigation */
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+/* This class is added by Javascript to slide it in */
+.side-cart-panel.open {
+    right: 0;
+}
+
+.side-cart-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.side-cart-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    overflow-y: auto;
+    /* Adds a scrollbar if you have lots of items */
+}
+
+.side-cart-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #eaeaea;
+    background-color: #f8f9fa;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+/* The dark background behind the cart */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    /* Below the cart, above the site */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.cart-overlay.show {
+    visibility: visible;
+    opacity: 1;
 }
