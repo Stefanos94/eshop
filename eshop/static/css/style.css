@@ -188,3 +188,36 @@
     visibility: visible;
     opacity: 1;
 }
+
+
+/* Modern Product Card Styling */
+.modern-product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.modern-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.custom-product-img {
+    max-height: 200px;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.modern-product-card:hover .custom-product-img {
+    opacity: 0.9;
+}
+
+.product-title a {
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.product-title a:hover {
+    color: #2b6c24 !important;
+    /* Uses the olive green from your hero section */
+}
