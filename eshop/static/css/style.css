@@ -569,19 +569,18 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark .navbar-toggler {
 }
 
 /* ======================================================= */
-/* --- UNIFIED NAVBAR STYLING ---  */
+/* --- SINGLE-ROW CENTERED NAVBAR STYLING ---  */
 /* ======================================================= */
 
-.med-unified-navbar {
+.med-centered-single-row {
     background-color: var(--pure-white);
     box-shadow: var(--soft-shadow);
     padding: 12px 0;
     border-bottom: 2px solid var(--primary-olive);
-    /* Adds a nice branded anchor line */
 }
 
 /* Nav Links Styling */
-.med-unified-navbar .nav-link {
+.med-centered-single-row .nav-link {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-main) !important;
     font-weight: 500;
@@ -589,7 +588,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark .navbar-toggler {
     transition: color 0.2s ease;
 }
 
-.med-unified-navbar .nav-link:hover {
+.med-centered-single-row .nav-link:hover {
     color: var(--primary-olive) !important;
 }
 
@@ -602,23 +601,60 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark .navbar-toggler {
     letter-spacing: 0.5px;
 }
 
-/* Constrain search bar width so it doesn't stretch too far */
-.max-width-search {
-    max-width: 500px;
+/* --- Search Bar with Inner Icon --- */
+.med-inline-search {
+    width: 250px;
 }
 
-/* Clean up Oscar's default search input to match your theme */
-.med-unified-navbar input[type="search"],
-.med-unified-navbar input[type="text"] {
-    border-radius: 20px 0 0 20px;
+.med-inline-search input {
+    border-radius: 20px;
     border: 1px solid #e1e1e1;
     background-color: var(--warm-bg);
+    padding: 8px 40px 8px 15px;
+    /* Creates empty space on the right for the icon */
+    width: 100%;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
-.med-unified-navbar button[type="submit"] {
-    border-radius: 0 20px 20px 0;
-    background-color: var(--primary-olive);
-    color: white;
-    border: none;
-    padding: 0 20px;
+.med-inline-search input:focus {
+    border-color: var(--primary-olive);
+    box-shadow: 0 0 0 2px rgba(43, 108, 36, 0.1);
+}
+
+/* Positioning the search icon inside the box */
+.med-search-icon-btn {
+    position: absolute;
+    right: 12px;
+    /* Positioned inside the input padding */
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-muted);
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.med-search-icon-btn:hover {
+    color: var(--primary-olive);
+}
+
+/* --- Language Button Fix --- */
+.lang-btn-clear {
+    background-color: transparent !important;
+    /* Strips any inherited background */
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang-btn-clear:hover {
+    opacity: 0.8;
 }
