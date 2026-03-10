@@ -1,9 +1,13 @@
 {% extends "oscar/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block styles %}
+    {# Standard Oscar styles followed by your custom design system #}
     <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+    {# Adding FontAwesome for modern icons #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 {% endblock %}
 
 {% block layout %}
