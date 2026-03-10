@@ -1,100 +1,95 @@
-{% load i18n i18n_extras %}
-{% load static %}
+{% load i18n i18n_extras currency_filters category_tags static %}
 {% get_current_language as CURRENT_LANG %}
 
-<nav id="top_page" class="navbar navbar-expand-lg navbar-light bg-light accounts">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".account-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light med-unified-navbar sticky-top">
+    <div class="container-fluid px-lg-5"> <a class="navbar-brand mr-4" href="/catalogue">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" width="120">
+        </a>
 
-        <div class="navbar-collapse account-collapse collapse">
-            <a href="/"><img src="{% static 'images/logo.png' %}" alt="Logo" width="120"></a>
-           
-            <ul class="navbar-nav ml-md-auto d-md-flex">
-                {% if user.is_authenticated %}
-                {% block nav_account_navbar_authenticated %}
-                    <li class="nav-item mr-2">
-                        {% if num_unread_notifications > 0 %}
-                            {# If user has new notifications - we change account link to go to inbox #}
-                            <a href="{% url 'customer:notifications-inbox' %}" class="nav-link mt-2 mt-lg-0">
-                                <i class="far fa-user mr-2"></i>
-                                {% trans "Account" %}
-                                <span class="badge badge-warning">{{ num_unread_notifications }}</span>
-                            </a>
-                        {% else %}
-                            <a href="{% url 'customer:summary' %}" class="nav-link mt-2 mt-lg-0">
-                                <i class="far fa-user mr-2"></i>
-                                {% trans "Account" %}
-                            </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#unifiedNavbar" aria-controls="unifiedNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="unifiedNavbar">
+
+            <ul class="navbar-nav mr-auto align-items-center w-100">
+                <li class="nav-item dropdown mr-lg-4">
+                    <a class="nav-link dropdown-toggle med-nav-highlight" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% trans "Products" %}
+                    </a>
+                    <div class="dropdown-menu shadow-sm border-0" aria-labelledby="navbarDropdown">
+                        {% category_tree depth=1 as tree_categories %}
+                        <a class="dropdown-item" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a>
+                        {% if tree_categories %}
+                            <div class="dropdown-divider"></div>
+                            {% for tree_category in tree_categories %}
+                                <a class="dropdown-item" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
+                            {% endfor %}
                         {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans "Offers" %}</a>
+                    </div>
+                </li>
+
+                <li class="nav-item flex-grow-1 max-width-search d-none d-lg-block">
+                    {% include "oscar/partials/search.html" %}
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto align-items-center">
+                
+                <li class="nav-item mx-2">
+                    <form action="{% url 'set_language' %}" method="post" class="m-0 d-flex align-items-center">
+                        {% csrf_token %}
+                        {% if CURRENT_LANG == "en" %}
+                            <input type="hidden" name="next" value="{% switch_language_url 'da' %}">
+                            <button type="submit" name="language" value="da" class="lang-btn" title="Switch to Danish">
+                                <img src="{% static 'images/Flag_of_Denmark.png' %}" alt="Danish" class="lang-flag">
+                            </button>
+                        {% else %}
+                            <input type="hidden" name="next" value="{% switch_language_url 'en' %}">
+                            <button type="submit" name="language" value="en" class="lang-btn" title="Switch to English">
+                                <img src="{% static 'images/Flag_of_the_United_Kingdom.png' %}" alt="English" class="lang-flag">
+                            </button>
+                        {% endif %}
+                    </form>
+                </li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item mx-2">
+                        <a href="{% if num_unread_notifications > 0 %}{% url 'customer:notifications-inbox' %}{% else %}{% url 'customer:summary' %}{% endif %}" class="nav-link">
+                            <i class="far fa-user"></i> {% trans "Account" %}
+                            {% if num_unread_notifications > 0 %}
+                                <span class="badge badge-warning">{{ num_unread_notifications }}</span>
+                            {% endif %}
+                        </a>
                     </li>
                     {% if user.is_staff or perms.partner.dashboard_access %}
-                        <li class="nav-item mr-2">
-                            <a href="{% url 'dashboard:index' %}" class="nav-link">
-                                <i class="fas fa-list-ul mr-2"></i>
-                                {% trans "Dashboard" %}
-                            </a>
+                        <li class="nav-item mx-1">
+                            <a href="{% url 'dashboard:index' %}" class="nav-link" title="Dashboard"><i class="fas fa-list-ul"></i></a>
                         </li>
                     {% endif %}
-                    <li class="nav-item mr-2">
-                        <a id="logout_link" href="{% url 'customer:logout' %}" class="nav-link">
-                            <i class="fas fa-sign-out-alt mr-2"></i>
-                            {% trans "Logout" %}
-                        </a>
+                    <li class="nav-item mx-1">
+                        <a href="{% url 'customer:logout' %}" class="nav-link text-muted" title="Logout"><i class="fas fa-sign-out-alt"></i></a>
                     </li>
-                {% endblock %}
                 {% else %}
-                    <li class="nav-item mr-2">
-                        <a id="login_link" href="{% url 'customer:login' %}" class="nav-link">
-                            <i class="fas fa-user mr-2"></i>
-                            {% trans "Login or register" %}
+                    <li class="nav-item mx-2">
+                        <a href="{% url 'customer:login' %}" class="nav-link text-nowrap">
+                            <i class="fas fa-user mr-1"></i> {% trans "Login" %}
                         </a>
                     </li>
                 {% endif %}
+
+                <li class="nav-item ml-lg-3 mt-3 mt-lg-0">
+                    {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+                </li>
+
             </ul>
-             {% block nav_account_languages %}
-            
-            {% comment %}
-            {% if LANGUAGES|length > 1 %}
-                <form id="language_selector" class="form-inline mb-0 mt-2 mt-lg-0" action="{% url 'set_language' %}" method="post">
-                    {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ language_neutral_url_path }}" />
-                    <div class="form-group mb-0">
-                        <select name="language" class="form-control">
-                            {% get_language_info_list for LANGUAGES as languages %}
-                            {% for language in languages %}
-                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE%} selected="selected"{% endif %}>
-                                    {{ language.name_local }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <button class="btn btn-outline-secondary ml-2" type="submit" data-loading-text="{% trans 'Submitting...' %}">{% trans "Go" %}</button>
-                </form>
-                {% endif %}
-                {% endcomment %}
-                
-                <form action="{% url 'set_language' %}" method="post" style="display:inline;">
-                    {% csrf_token %}
-                    {% comment %}
-                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
-                    {% endcomment %}    
-                    {% if CURRENT_LANG == "en" %}
-                        <input type="hidden" name="next" value="{% switch_language_url 'da' %}">
-                        <!-- Switch to Danish -->
-                        <button type="submit" name="language" value="da" class="lang-btn">
-                            <img src="{% static 'images/Flag_of_Denmark.png' %}" alt="Danish" class="lang-flag">
-                        </button>
-                    {% else %}
-                        <!-- Switch to English -->
-                         <input type="hidden" name="next" value="{% switch_language_url 'en' %}">
-                        <button type="submit" name="language" value="en" class="lang-btn">
-                            <img src="{% static 'images/Flag_of_the_United_Kingdom.png' %}" alt="English" class="lang-flag">
-                        </button>
-                    {% endif %}
-                </form>
-            {% endblock %}
         </div>
+        
+        <div class="w-100 d-block d-lg-none mt-2">
+            {% include "oscar/partials/search.html" %}
+        </div>
+
     </div>
 </nav>

@@ -90,7 +90,6 @@ h3,
     display: inline-block;
     text-decoration: none;
     font-weight: 600;
-    background-color: #2b6c24;
     color: #ffffff;
     transition: all 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
     ;
@@ -567,4 +566,59 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark .navbar-toggler {
     background-color: #2b6c24 !important;
     padding: 8px 12px;
     border-radius: 8px;
+}
+
+/* ======================================================= */
+/* --- UNIFIED NAVBAR STYLING ---  */
+/* ======================================================= */
+
+.med-unified-navbar {
+    background-color: var(--pure-white);
+    box-shadow: var(--soft-shadow);
+    padding: 12px 0;
+    border-bottom: 2px solid var(--primary-olive);
+    /* Adds a nice branded anchor line */
+}
+
+/* Nav Links Styling */
+.med-unified-navbar .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-main) !important;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.med-unified-navbar .nav-link:hover {
+    color: var(--primary-olive) !important;
+}
+
+/* The 'Products' text highlight */
+.med-nav-highlight {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.15rem !important;
+    color: var(--primary-olive) !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Constrain search bar width so it doesn't stretch too far */
+.max-width-search {
+    max-width: 500px;
+}
+
+/* Clean up Oscar's default search input to match your theme */
+.med-unified-navbar input[type="search"],
+.med-unified-navbar input[type="text"] {
+    border-radius: 20px 0 0 20px;
+    border: 1px solid #e1e1e1;
+    background-color: var(--warm-bg);
+}
+
+.med-unified-navbar button[type="submit"] {
+    border-radius: 0 20px 20px 0;
+    background-color: var(--primary-olive);
+    color: white;
+    border: none;
+    padding: 0 20px;
 }
